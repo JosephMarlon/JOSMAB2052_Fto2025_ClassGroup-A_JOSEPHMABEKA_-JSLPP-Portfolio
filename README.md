@@ -1,5 +1,9 @@
 # JSL Portfolio Piece: Kanban App Deployment & Features Implementation
 
+Loom video
+
+https://www.loom.com/share/eb0b4b2f2601494d9864009bc587392f?sid=556ab471-000d-4729-b9f8-3cb3f93fc44b
+
 ## Overview
 
 This project involves **deploying a Kanban app to Netlify**, ensuring the app's functionality and persistence through local storage, and implementing dynamic features such as task editing, deletion, sidebar interaction, and a theme toggle. The goal is to deliver a fully functional, deployable application that is responsive across devices and maintains data consistency. Students will also focus on **clean, modular code** that is well-documented for future development.
@@ -22,6 +26,7 @@ This project involves **deploying a Kanban app to Netlify**, ensuring the app's 
 ## Before You Begin
 
 **Check out the [Figma Reference File](https://www.figma.com/design/y7bFCUYL5ZHfPeojACBXg2/Challenges-%7C-JSL?node-id=6033-11092&t=XbQhBWPYxXDAqp3x-1) and the project user stories in your student dashboard** before you start building.
+
 
 ## Key Objectives
 
