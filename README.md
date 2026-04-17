@@ -1,8 +1,7 @@
 # JSL Portfolio Piece: Kanban App Deployment & Features Implementation
 
 Loom video
-
-https://www.loom.com/share/eb0b4b2f2601494d9864009bc587392f?sid=556ab471-000d-4729-b9f8-3cb3f93fc44b
+https://www.loom.com/share/bc20667c76f5436a93a02073fc3127c0
 
 ## Overview
 
