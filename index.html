@@ -8,12 +8,7 @@
     />
 
     <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="./assets/favicon.svg"
-    />
+    <link rel="icon" type="image/svg+xml" sizes="32x32" href="./assets/favicon.svg" />
     <script defer src="./scripts/main.js" type="module"></script>
     <title>Kanban Task Management</title>
   </head>
@@ -27,9 +22,30 @@
 
       <div class="boards-nav-links-div" id="boards-nav-links-div">
         <h4 id="headline-sidepanel">ALL BOARDS (1)</h4>
-        <button class="board-btn">Launch Career</button>
+        <button class="board-btn">
+          <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M0 2.889A2.889 2.889 0 0 1 2.889 0H13.11A2.889 2.889 0 0 1 16 2.889V13.11A2.888 2.888 0 0 1 13.111 16H2.89A2.889 2.889 0 0 1 0 13.111V2.89Zm1.333 5.555v4.667c0 .859.697 1.556 1.556 1.556h6.889V8.444H1.333Zm8.445-1.333V1.333h-6.89A1.556 1.556 0 0 0 1.334 2.89V7.11h8.444Zm4.889-1.333H11.11v4.444h3.556V5.778Zm0 5.778H11.11v3.11h2a1.556 1.556 0 0 0 1.556-1.555v-1.555Zm0-7.112V2.89a1.555 1.555 0 0 0-1.556-1.556h-2v3.111h3.556Z" fill="currentColor"/></svg>
+          Launch Career
+        </button>
+      </div>
+
+      <div class="side-bar-bottom">
+        <div class="theme-toggle">
+          <img src="./assets/icon-light-theme.svg" alt="light theme" />
+          <div class="toggle-switch">
+             <input type="checkbox" id="theme-checkbox" />
+             <label for="theme-checkbox"></label>
+          </div>
+          <img src="./assets/icon-dark-theme.svg" alt="dark theme" />
+        </div>
+        <button class="hide-sidebar-btn" id="hide-sidebar-btn">
+          <img src="./assets/icon-hide-sidebar.svg" alt="hide sidebar" />
+          Hide Sidebar
+        </button>
       </div>
     </nav>
+    <div class="show-sidebar-btn" id="show-sidebar-btn">
+      <img src="./assets/icon-show-sidebar.svg" alt="show sidebar" />
+    </div>
 
     <!-- Main Layout: Header with board title, add task button, and main content area for task columns. -->
     <div id="layout">
@@ -55,18 +71,18 @@
           <div class="column-div" data-status="todo">
             <div id="todo-head-div" class="column-head-div">
               <span class="dot" id="todo-dot"></span>
-              <h4 id="toDoText" class="columnHeader">TODO (2)</h4>
+              <h4 id="toDoText" class="columnHeader">TO DO (2)</h4>
             </div>
-            <!-- Tasks container for TODO -->
+            <!-- Tasks container for TO DO -->
             <div class="tasks-container"></div>
           </div>
           <!-- DOING Column -->
           <div class="column-div" data-status="doing">
             <div id="doing-head-div" class="column-head-div">
               <span class="dot" id="doing-dot"></span>
-              <h4 id="doingText" class="columnHeader">DOING (2)</h4>
+              <h4 id="doingText" class="columnHeader">IN PROGRESS (2)</h4>
             </div>
-            <!-- Tasks container for DOING -->
+            <!-- Tasks container for IN PROGRESS -->
             <div class="tasks-container"></div>
           </div>
           <!-- DONE Column -->
@@ -99,9 +115,9 @@
 
         <label for="task-status">Status</label>
         <select id="task-status" name="status" required>
-          <option value="todo">todo</option>
-          <option value="doing">doing</option>
-          <option value="done">done</option>
+          <option value="todo">To Do</option>
+          <option value="doing">In Progress</option>
+          <option value="done">Done</option>
         </select>
       </form>
     </dialog>
@@ -151,9 +167,9 @@
             >Status</label
           >
           <select name="status" id="select-status" required>
-            <option value="todo">to_do</option>
+            <option value="todo">To Do</option>
             <option value="doing">In Progress</option>
-            <option value="done">done</option>
+            <option value="done">Done</option>
           </select>
         </div>
         <div class="button-group">
