@@ -1,4 +1,7 @@
-import { addNewTask } from "../tasks/taskManager.js";
+
+import { addNewTask, saveTaskChanges, deleteTask } from "../tasks/taskManager.js";
+
+let activeTaskId = null;
 
 export function setupModalCloseHandler() {
   const modal = document.getElementById("task-modal");
@@ -29,7 +32,27 @@ export function setupNewTaskModalHandler() {
   });
 }
 
+export function setupEditAndDeleteTaskHandler() {
+  const saveBtn = document.getElementById("save-task-changes-btn");
+  const deleteBtn = document.getElementById("delete-task-btn");
+
+  if (saveBtn) {
+    saveBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (activeTaskId !== null) saveTaskChanges(activeTaskId);
+    });
+  }
+
+  if (deleteBtn) {
+    deleteBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (activeTaskId !== null) deleteTask(activeTaskId);
+    });
+  }
+}
+
 export function openTaskModal(task) {
+  activeTaskId = task.id;
   const modal = document.getElementById("task-modal");
   document.getElementById("task-title").value = task.title;
   document.getElementById("task-desc").value = task.description;
