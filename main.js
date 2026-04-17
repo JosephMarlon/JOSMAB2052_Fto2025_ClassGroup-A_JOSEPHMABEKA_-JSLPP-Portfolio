@@ -5,14 +5,31 @@ import {
   setupNewTaskModalHandler,
 } from "./ui/modalHandlers.js";
 
-function initTaskBoard() {
-  const tasks = loadTasksFromStorage();
-  clearExistingTasks();
-  renderTasks(tasks);
-  setupModalCloseHandler();
-  setupNewTaskModalHandler();
 
-  // Sidebar toggling logic
+
+function setupThemeToggle() {
+  const themeCheckbox = document.getElementById("theme-checkbox");
+  const isDark = localStorage.getItem("dark-theme") === "true";
+  
+  if (isDark) {
+    document.body.classList.add("dark-theme");
+    if(themeCheckbox) themeCheckbox.checked = true;
+  }
+  
+  if (themeCheckbox) {
+    themeCheckbox.addEventListener("change", (e) => {
+      if (e.target.checked) {
+        document.body.classList.add("dark-theme");
+        localStorage.setItem("dark-theme", "true");
+      } else {
+        document.body.classList.remove("dark-theme");
+        localStorage.setItem("dark-theme", "false");
+      }
+    });
+  }
+}
+
+function setupSidebarToggle() {
   const hideSidebarBtn = document.getElementById("hide-sidebar-btn");
   const showSidebarBtn = document.getElementById("show-sidebar-btn");
   const sidebar = document.getElementById("side-bar-div");
@@ -29,5 +46,20 @@ function initTaskBoard() {
     });
   }
 }
+
+function initTaskBoard() {
+  const tasks = loadTasksFromStorage();
+  clearExistingTasks();
+  renderTasks(tasks);
+  setupModalCloseHandler();
+  setupNewTaskModalHandler();
+  setupEditAndDeleteTaskHandler();
+  setupThemeToggle();
+  setupSidebarToggle();
+}
+
+
+
+
 
 document.addEventListener("DOMContentLoaded", initTaskBoard);
