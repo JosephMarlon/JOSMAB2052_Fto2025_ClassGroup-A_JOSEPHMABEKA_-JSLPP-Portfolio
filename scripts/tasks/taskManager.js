@@ -19,6 +19,7 @@ export function addNewTask() {
     title,
     description,
     status,
+    board: "Launch Career"
   };
 
   const updatedTasks = [...tasks, newTask];
@@ -28,4 +29,29 @@ export function addNewTask() {
   renderTasks(updatedTasks);
   resetForm();
   overlay.close();
+}
+
+export function saveTaskChanges(taskId) {
+  const tasks = loadTasksFromStorage();
+  const taskIndex = tasks.findIndex((t) => t.id === taskId);
+  if (taskIndex > -1) {
+    tasks[taskIndex].title = document.getElementById("task-title").value.trim();
+    tasks[taskIndex].description = document.getElementById("task-desc").value.trim();
+    tasks[taskIndex].status = document.getElementById("task-status").value;
+
+    saveTasksToStorage(tasks);
+    clearExistingTasks();
+    renderTasks(tasks);
+    document.getElementById("task-modal").close();
+  }
+}
+
+export function deleteTask(taskId) {
+  const tasks = loadTasksFromStorage();
+  const updatedTasks = tasks.filter((t) => t.id !== taskId);
+
+  saveTasksToStorage(updatedTasks);
+  clearExistingTasks();
+  renderTasks(updatedTasks);
+  document.getElementById("task-modal").close();
 }
